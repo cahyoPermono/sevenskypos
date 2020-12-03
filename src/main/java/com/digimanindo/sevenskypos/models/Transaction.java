@@ -1,14 +1,19 @@
 package com.digimanindo.sevenskypos.models;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,5 +41,13 @@ public class Transaction extends Auditable<String> {
 
 	@NotNull
 	private Double total;
+
+	@Builder.Default
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(
+            name = "transaction_id",
+            nullable = false
+    )
+	private List<TransactionDetails> transactionDetails = new ArrayList<>();
 
 }
