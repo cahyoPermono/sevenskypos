@@ -1,4 +1,4 @@
-package com.digimanindo.sevenskypos.security.services;
+package com.digimanindo.sevenskypos.services;
 
 import java.util.List;
 

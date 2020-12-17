@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.digimanindo.sevenskypos.models.Product;
 import com.digimanindo.sevenskypos.payload.response.MessageResponse;
-import com.digimanindo.sevenskypos.security.services.ProductService;
+import com.digimanindo.sevenskypos.services.ProductService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

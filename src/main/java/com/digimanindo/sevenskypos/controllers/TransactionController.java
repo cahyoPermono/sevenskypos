@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.digimanindo.sevenskypos.models.Product;
 import com.digimanindo.sevenskypos.models.Transaction;
 import com.digimanindo.sevenskypos.payload.request.TransactionRequest;
-import com.digimanindo.sevenskypos.security.services.TransactionService;
+import com.digimanindo.sevenskypos.services.TransactionService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -29,11 +29,11 @@ public class TransactionController {
 
 	@Autowired
 	TransactionService transactionService;
-
+	
 	@GetMapping("")
 	@PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
-	public List<Transaction> getAllTransaction() {
-		return null;
+	public List<Transaction> getAllProduct() {
+		return transactionService.getAllTransaction();
 	}
 
 	@PostMapping("")
